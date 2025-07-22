@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>English Dictation Practice</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🎯 English Dictation Practice</h1>
+            <p>Practice your English spelling with audio dictation!</p>
+        </header>
+
+        <main>
+            <!-- Game Setup Section -->
+            <div id="setupSection" class="section">
+                <div class="setup-card">
+                    <h2>🚀 Let's Start!</h2>
+                    <div class="input-group">
+                        <label for="wordCount">How many words would you like to practice?</label>
+                        <input type="number" id="wordCount" min="1" max="20" value="5" class="number-input">
+                    </div>
+                    <div class="input-group">
+                        <label for="wordSet">Choose word set:</label>
+                        <select id="wordSet" class="select-input">
+                            <option value="daysOfWeek">Days of the Week</option>
+                            <option value="months">Months</option>
+                            <option value="colors">Colors</option>
+                            <option value="animals">Animals</option>
+                        </select>
+                    </div>
+                    
+                    <div class="custom-words-section">
+                        <button id="addCustomWordsBtn" class="btn btn-secondary">📝 Add Custom Word List</button>
+                    </div>
+                    
+                    <button id="startGame" class="btn btn-primary">Start Practice</button>
+                </div>
+            </div>
+
+            <!-- Game Play Section -->
+            <div id="gameSection" class="section hidden">
+                <div class="game-card">
+                    <div class="game-header">
+                        <div class="progress-bar">
+                            <div class="progress" id="progressBar"></div>
+                            <span class="progress-text" id="progressText">0 / 5</span>
+                        </div>
+                        <button id="exitGameButton" class="btn btn-exit" title="Exit to Home">
+                            🏠 Exit
+                        </button>
+                    </div>
+
+                    <div class="word-display">
+                        <h3>Word <span id="currentWordNumber">1</span></h3>
+                        <div class="audio-controls">
+                            <button id="playButton" class="btn btn-audio">
+                                🔊 Play Word
+                            </button>
+                            <button id="replayButton" class="btn btn-secondary">
+                                🔄 Play Again
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="input-section">
+                        <label for="userInput">Type what you hear:</label>
+                        <input type="text" id="userInput" class="text-input" placeholder="Type the word here..." autocomplete="off">
+                        <button id="checkButton" class="btn btn-check">Check Answer</button>
+                    </div>
+
+                    <div id="feedback" class="feedback hidden">
+                        <div class="feedback-content">
+                            <span class="feedback-icon"></span>
+                            <span class="feedback-text"></span>
+                            <div class="correct-word"></div>
+                        </div>
+                    </div>
+
+                    <div class="action-buttons hidden" id="actionButtons">
+                        <button id="nextButton" class="btn btn-primary">Next Word</button>
+                        <button id="tryAgainButton" class="btn btn-secondary">Try Again</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Results Section -->
+            <div id="resultsSection" class="section hidden">
+                <div class="results-card">
+                    <h2>🎉 Practice Complete!</h2>
+                    <div class="score-display">
+                        <div class="score-circle">
+                            <span id="scorePercentage">0%</span>
+                        </div>
+                        <p>You got <span id="correctCount">0</span> out of <span id="totalCount">0</span> words correct!</p>
+                    </div>
+                    
+                    <div id="incorrectWords" class="incorrect-words hidden">
+                        <h3>Words to review:</h3>
+                        <ul id="incorrectWordsList"></ul>
+                    </div>
+
+                    <div class="final-actions">
+                        <button id="playAgainButton" class="btn btn-primary">Practice Again</button>
+                        <button id="newGameButton" class="btn btn-secondary">New Game</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Custom Words Modal -->
+            <div id="customWordsModal" class="modal hidden">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h3>📝 Create Custom Word List</h3>
+                        <button id="closeModal" class="close-btn">&times;</button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="input-group">
+                            <label for="customListName">List Name:</label>
+                            <input type="text" id="customListName" class="text-input" placeholder="e.g., My Vocabulary, Science Terms, etc.">
+                        </div>
+                        <div class="input-group">
+                            <label for="customWords">Words (separated by comma, semicolon, or tab):</label>
+                            <textarea id="customWords" class="textarea-input" rows="6" 
+                                placeholder="apple, banana, cherry&#10;or&#10;apple; banana; cherry&#10;or&#10;apple	banana	cherry"></textarea>
+                        </div>
+                        <div class="word-preview">
+                            <h4>Preview (<span id="wordCount">0</span> words):</h4>
+                            <div id="wordPreview" class="preview-list"></div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button id="saveCustomWords" class="btn btn-primary">Save Word List</button>
+                        <button id="cancelModal" class="btn btn-secondary">Cancel</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Notification Toast -->
+            <div id="notification" class="notification hidden">
+                <div class="notification-content">
+                    <span class="notification-icon"></span>
+                    <span class="notification-text"></span>
+                    <button class="notification-close">&times;</button>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="words.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

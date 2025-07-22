@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>English Dictation Practice - Learn Spelling Through Audio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .header {
+            text-align: center;
+            color: white;
+            margin-bottom: 3rem;
+            padding: 2rem 0;
+        }
+
+        .header h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .header p {
+            font-size: 1.3rem;
+            opacity: 0.9;
+            font-weight: 300;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .main-content {
+            background: white;
+            border-radius: 20px;
+            padding: 3rem;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            margin-bottom: 2rem;
+        }
+
+        .start-button {
+            display: inline-block;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            text-decoration: none;
+            padding: 15px 40px;
+            border-radius: 50px;
+            font-size: 1.2rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            transition: all 0.3s ease;
+            margin: 2rem auto;
+            display: block;
+            text-align: center;
+            max-width: 300px;
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.3);
+        }
+
+        .start-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 30px rgba(102, 126, 234, 0.4);
+        }
+
+        .section {
+            margin-bottom: 2.5rem;
+        }
+
+        .section h2 {
+            color: #667eea;
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .section h3 {
+            color: #555;
+            font-size: 1.3rem;
+            margin-bottom: 0.8rem;
+            margin-top: 1.5rem;
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .feature-card {
+            background: #f8f9fa;
+            padding: 1.5rem;
+            border-radius: 15px;
+            border-left: 4px solid #667eea;
+            transition: transform 0.2s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .feature-icon {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .feature-title {
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 0.5rem;
+        }
+
+        .step-list {
+            list-style: none;
+            counter-reset: step-counter;
+        }
+
+        .step-list li {
+            counter-increment: step-counter;
+            margin-bottom: 1rem;
+            padding-left: 3rem;
+            position: relative;
+        }
+
+        .step-list li::before {
+            content: counter(step-counter);
+            position: absolute;
+            left: 0;
+            top: 0;
+            background: #667eea;
+            color: white;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        .highlight {
+            background: linear-gradient(120deg, #a8edea 0%, #fed6e3 100%);
+            padding: 1.5rem;
+            border-radius: 10px;
+            border-left: 4px solid #667eea;
+            margin: 1.5rem 0;
+        }
+
+        .storage-info {
+            background: #e8f4f8;
+            padding: 1.5rem;
+            border-radius: 10px;
+            border-left: 4px solid #00b894;
+            margin: 1rem 0;
+        }
+
+        .warning {
+            background: #fff3cd;
+            padding: 1.5rem;
+            border-radius: 10px;
+            border-left: 4px solid #ffc107;
+            margin: 1rem 0;
+        }
+
+        .tech-specs {
+            background: #f8f9fa;
+            padding: 1.5rem;
+            border-radius: 10px;
+            margin: 1.5rem 0;
+        }
+
+        .tech-specs h4 {
+            color: #667eea;
+            margin-bottom: 0.5rem;
+        }
+
+        .tech-specs ul {
+            margin-left: 1.5rem;
+        }
+
+        .footer {
+            text-align: center;
+            color: white;
+            padding: 2rem;
+            opacity: 0.8;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 15px;
+            }
+
+            .header h1 {
+                font-size: 2.5rem;
+            }
+
+            .main-content {
+                padding: 2rem;
+            }
+
+            .feature-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🎯 English Dictation Practice</h1>
+            <p>Master English spelling through interactive audio dictation exercises</p>
+        </div>
+
+        <div class="main-content">
+            <div class="section">
+                <h2>🚀 What is This Game?</h2>
+                <p>English Dictation Practice is an interactive web application designed to help you improve your English spelling through audio-based dictation exercises. Listen to words spoken aloud and type what you hear - it's that simple!</p>
+                
+                <div class="highlight">
+                    <strong>🎯 Main Goal:</strong> Improve your English spelling, listening skills, and vocabulary through engaging dictation practice with immediate feedback.
+                </div>
+
+                <a href="game.html" class="start-button">🎮 Start Playing Now!</a>
+            </div>
+
+            <div class="section">
+                <h2>✨ Key Features</h2>
+                <div class="feature-grid">
+                    <div class="feature-card">
+                        <div class="feature-icon">🔊</div>
+                        <div class="feature-title">Audio Dictation</div>
+                        <p>High-quality text-to-speech pronunciation with replay options</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">📚</div>
+                        <div class="feature-title">Multiple Word Sets</div>
+                        <p>Days, months, colors, animals, and custom word lists</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">⌨️</div>
+                        <div class="feature-title">Keyboard Friendly</div>
+                        <p>Full keyboard navigation with Enter key support</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">📊</div>
+                        <div class="feature-title">Progress Tracking</div>
+                        <p>Real-time scoring and detailed results</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">📝</div>
+                        <div class="feature-title">Custom Word Lists</div>
+                        <p>Create and save your own vocabulary sets</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">📱</div>
+                        <div class="feature-title">Responsive Design</div>
+                        <p>Works perfectly on desktop, tablet, and mobile</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2>🎮 How to Play</h2>
+                <ol class="step-list">
+                    <li><strong>Choose Your Settings:</strong> Select the number of words (1-20) and word category</li>
+                    <li><strong>Listen:</strong> Click 🔊 "Play Word" or wait for auto-play</li>
+                    <li><strong>Type:</strong> Enter what you hear in the text box</li>
+                    <li><strong>Check:</strong> Press Enter or click "Check Answer"</li>
+                    <li><strong>Learn:</strong> Get instant feedback - correct answers show ✅, incorrect show ❌ with the right spelling</li>
+                    <li><strong>Continue:</strong> Press Enter again to move to next word or try again</li>
+                    <li><strong>Review:</strong> See your final score and words that need more practice</li>
+                </ol>
+
+                <div class="highlight">
+                    <strong>💡 Pro Tip:</strong> You can navigate the entire game using just the Enter key! Perfect for focused practice sessions.
+                </div>
+            </div>
+
+            <div class="section">
+                <h2>📝 Custom Word Lists</h2>
+                <h3>Creating Your Own Lists</h3>
+                <p>One of the most powerful features is the ability to create custom word lists tailored to your learning needs:</p>
+
+                <ol class="step-list">
+                    <li>Click the <strong>"📝 Add Custom Word List"</strong> button</li>
+                    <li>Give your list a descriptive name (e.g., "Medical Terms", "Science Vocabulary")</li>
+                    <li>Add words in any of these formats:
+                        <ul style="margin-top: 0.5rem; margin-left: 2rem;">
+                            <li><strong>Comma separated:</strong> apple, banana, cherry, orange</li>
+                            <li><strong>Semicolon separated:</strong> apple; banana; cherry; orange</li>
+                            <li><strong>Tab separated:</strong> apple	banana	cherry	orange</li>
+                            <li><strong>Line separated:</strong> One word per line</li>
+                        </ul>
+                    </li>
+                    <li>Watch the live preview update as you type</li>
+                    <li>Click "Save Word List" to store it permanently</li>
+                    <li>Your new list appears in the dropdown menu automatically!</li>
+                </ol>
+
+                <h3>💾 Data Storage & Persistence</h3>
+                <div class="storage-info">
+                    <h4>🔒 Your Word Lists are Saved Locally</h4>
+                    <p><strong>Custom word lists are stored in your browser's localStorage, which means:</strong></p>
+                    <ul style="margin-top: 0.5rem;">
+                        <li>✅ <strong>Persistent:</strong> Lists stay even after closing browser or restarting computer</li>
+                        <li>✅ <strong>Private:</strong> Only you can see your custom lists</li>
+                        <li>✅ <strong>Fast:</strong> No internet connection required to load saved lists</li>
+                        <li>✅ <strong>Free:</strong> No account signup or data limits</li>
+                    </ul>
+                </div>
+
+                <div class="warning">
+                    <h4>⚠️ Important Notes</h4>
+                    <p><strong>Your custom lists will be lost if you:</strong></p>
+                    <ul style="margin-top: 0.5rem;">
+                        <li>Clear your browser data/cookies</li>
+                        <li>Use private/incognito browsing mode</li>
+                        <li>Switch to a different browser or device</li>
+                        <li>Use a different website URL (local vs. GitHub Pages)</li>
+                    </ul>
+                    <p style="margin-top: 0.5rem;"><strong>💡 Tip:</strong> Keep a backup of your word lists in a text file!</p>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2>⌨️ Keyboard Shortcuts</h2>
+                <div class="tech-specs">
+                    <ul>
+                        <li><strong>Enter:</strong> Start game → Check answer → Next word → Play again</li>
+                        <li><strong>🏠 Exit button:</strong> Return to home anytime during practice</li>
+                        <li><strong>Escape:</strong> Close modal windows</li>
+                        <li><strong>Space:</strong> Replay current word (when input is focused)</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2>🎯 Learning Benefits</h2>
+                <div class="feature-grid">
+                    <div class="feature-card">
+                        <div class="feature-icon">👂</div>
+                        <div class="feature-title">Listening Skills</div>
+                        <p>Improve your ability to distinguish English sounds and pronunciations</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">✏️</div>
+                        <div class="feature-title">Spelling Accuracy</div>
+                        <p>Reinforce correct spelling patterns through repetitive practice</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">🧠</div>
+                        <div class="feature-title">Memory Retention</div>
+                        <p>Audio-visual learning helps cement words in long-term memory</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">⚡</div>
+                        <div class="feature-title">Quick Recall</div>
+                        <p>Build faster word recognition and spelling recall speed</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2>🛠️ Technical Requirements</h2>
+                <div class="tech-specs">
+                    <h4>Supported Browsers:</h4>
+                    <ul>
+                        <li>Chrome, Firefox, Safari, Edge (latest versions)</li>
+                        <li>Mobile browsers (iOS Safari, Chrome Mobile)</li>
+                    </ul>
+                    
+                    <h4>Required Features:</h4>
+                    <ul>
+                        <li><strong>Web Speech API:</strong> For text-to-speech functionality</li>
+                        <li><strong>localStorage:</strong> For saving custom word lists</li>
+                        <li><strong>JavaScript enabled:</strong> Essential for all game functionality</li>
+                    </ul>
+
+                    <h4>Optional but Recommended:</h4>
+                    <ul>
+                        <li>Good speakers or headphones for clear audio</li>
+                        <li>Stable internet connection (for initial loading)</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2>🎉 Perfect For</h2>
+                <ul style="margin-left: 2rem;">
+                    <li><strong>English Language Learners:</strong> Improve spelling and pronunciation</li>
+                    <li><strong>Students:</strong> Practice vocabulary for tests and assignments</li>
+                    <li><strong>Teachers:</strong> Classroom dictation exercises and homework</li>
+                    <li><strong>Parents:</strong> Help children with spelling practice at home</li>
+                    <li><strong>Anyone:</strong> Who wants to improve their English spelling skills!</li>
+                </ul>
+            </div>
+
+            <a href="game.html" class="start-button">🚀 Ready to Start Learning?</a>
+        </div>
+
+        <div class="footer">
+            <p>© 2025 English Dictation Practice - Learn, Practice, Master!</p>
+            <p>Built with ❤️ for English learners everywhere</p>
+        </div>
+    </div>
+</body>
+</html>
